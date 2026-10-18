@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* ===== Couleurs du site (mode clair) ===== */
+:root {
+  --bg: #f6f2f5;
+  --surface: #ffffff;
+  --text: #2b1a26;
+  --muted: #7a6a74;
+  --primary: #5f153f;
+  --primary-soft: #c4aebb;
+  --accent: #0f77bb;
+  --border: #e4d9e0;
+  --shadow: 0 4px 14px rgba(95, 21, 63, 0.12);
+  --header-bg: linear-gradient(135deg, #c4aebb, #e3d3dc);
+  --header-text: #5f153f;
+  --ok-bg: #e3f4e5;
+  --ok-text: #2e7d32;
+  --low-bg: #fde8e6;
+  --low-text: #c0392b;
+}
+
+/* ===== Couleurs du mode sombre (classe "dark" ajoutée sur <body>) ===== */
+body.dark {
+  --bg: #1c1219;
+  --surface: #2a1c26;
+  --text: #f1e7ee;
+  --muted: #b9a5b2;
+  --primary: #e7b8d3;
+  --primary-soft: #5a3a4f;
+  --accent: #6ab7f0;
+  --border: #44303d;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --header-bg: linear-gradient(135deg, #3a1f31, #28161f);
+  --header-text: #f1e7ee;
+  --ok-bg: #1f3d24;
+  --ok-text: #8fd694;
+  --low-bg: #4a2220;
+  --low-text: #ff9a90;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}

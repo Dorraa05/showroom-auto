@@ -1,0 +1,21 @@
+<app-head-bar></app-head-bar>
+<app-search-bar [autos]="autoList" (onSelectCar)="selectCar($event)"></app-search-bar>
+
+
+ @if(selectedCar){
+    <!-- Cliquer sur le fond sombre ferme la fenêtre -->
+    <div class="overlay" (click)="closeCar()">
+        <!-- stopPropagation : cliquer DANS la fenêtre ne la ferme pas -->
+        <div class="modal" (click)="$event.stopPropagation()">
+            <button class="modal-close" (click)="closeCar()">✕</button>
+            <img [src]="'images/' + selectedCar.photo" [alt]="selectedCar.model" />
+            <h2>{{selectedCar.brand}} {{selectedCar.model}}</h2>
+            <p class="description">{{selectedCar.description}}</p>
+            <ul class="specs">
+                <li>Power: {{selectedCar.power}}</li>
+                <li>Price: {{selectedCar.price}} TND</li>
+                <li>Stock: {{selectedCar.availability}}</li>
+            </ul>
+        </div>
+    </div>
+}

@@ -1,0 +1,56 @@
+<div class="toolbar">
+    <div class="container search-box">
+        <label>Brand:</label>
+        <input type="text" #brand placeholder="Audi, BMW..." (input)="selectAutos(brand.value)" />
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+    </div>
+
+    <div class="filters">
+        <label for="sort">Sort by:</label>
+        <select id="sort" #sort (change)="changeSort(sort.value)">
+            <option value="default">Default</option>
+            <option value="priceAsc">Price: low to high</option>
+            <option value="priceDesc">Price: high to low</option>
+            <option value="power">Most powerful</option>
+            <option value="name">Name (A-Z)</option>
+        </select>
+
+        <label class="fav-toggle">
+            <input type="checkbox" #favOnly (change)="toggleFavoritesOnly(favOnly.checked)" />
+            Favorites only ({{favorites.length}})
+        </label>
+    </div>
+</div>
+
+<p class="result-count">{{selectedAutos.length}} car(s) found</p>
+
+ <div class="container cards">
+    @for(auto of selectedAutos ; track auto.id){
+            <div class="auto-card">
+                <div class="photo">
+                    <img [src]="'images/' + auto.photo" [alt]="auto.brand + ' ' + auto.model" />
+                    <button class="fav-btn" [class.active]="isFavorite(auto.id)" (click)="toggleFavorite(auto)" title="Add to favorites">
+                        <fa-icon [icon]="faHeart"></fa-icon>
+                    </button>
+                </div>
+                <div class="details">
+                    <h3>{{auto.brand}} {{auto.model}}</h3>
+                    <p>
+                        Power: {{auto.power}}
+                        <br />
+                        Price: {{auto.price}} TND
+                        <br />
+                        <span class="stock" [class.low]="auto.availability <= 3">Only {{auto.availability}} left in stock</span>
+                    </p>
+                </div>
+                <div class="see_more">
+                    <button (click)="selectCar(auto)">See More...</button>
+                </div>
+                
+            </div>
+
+
+    } @empty {
+        <p class="empty">No car matches your search.</p>
+    }
+</div>
